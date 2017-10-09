@@ -8,6 +8,7 @@ class UserDelete extends React.Component {
     super(props);
     //bind tiis to event
     this.modalDeleteHide = this.modalDeleteHide.bind(this);
+    this.userDelete = this.userDelete.bind(this);
   }
 
   render() {
@@ -19,13 +20,24 @@ class UserDelete extends React.Component {
 
           <Modal.Footer>
             <Button onClick={this.modalDeleteHide}>No</Button>
-            <Button bsStyle="primary">Yes</Button>
+            <Button bsStyle="primary" onClick={this.userDelete}>Yes</Button>
           </Modal.Footer>
         </Modal>
     )
   }
 
   modalDeleteHide(event) {
+    this.props.dispatch({
+      type: 'user.modalDeleteHide'
+    })
+  }
+
+  userDelete(event) {
+    this.props.dispatch({
+      type: 'users.delete',
+      id: this.props.modal_delete.id,
+    })
+
     this.props.dispatch({
       type: 'user.modalDeleteHide'
     })
