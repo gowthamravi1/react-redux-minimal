@@ -45,4 +45,29 @@ class reducerClass {
     }
     return new_state;
   }
+
+  static add(new_state, action) {
+    const id = Number((Math.random() * 1000000).toPrecision(6));
+
+    //add the users
+    new_state.list.push({
+      id: id,
+      username: action.username,
+      job: action.job,
+    });
+    return new_state;
+  }
+
+  static edit(new_state, action) {
+
+    //edit the users
+
+    return new_state;
+  }
+
+  // saga fetch
+  static fetchListSuccess(new_state, action) {
+    new_state.list = action.users
+    return new_state;
+  }
 }
